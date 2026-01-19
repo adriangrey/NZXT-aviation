@@ -1,13 +1,9 @@
-# NZXT Aviation Gauge
+# NZXT Aviation Gauge Kraken Z3 Fork
 
-Aircraft Engine Indicating and Crew Alerting System (EICAS) inspired gauge using the NZXT web integrations API.
+Aircraft Engine Indicating and Crew Alerting System (EICAS) inspired gauge using the NZXT web integrations API by Reinhardtbotha forked by AdrianGrey to work with a Kraken Z3.
 
 <img src="Screenshot1.png" width=350 />
 <img src="Recording1.gif" />
-
-# Use in Kraken web integration
-
-URL: https://reinhardtbotha.github.io/NZXT-aviation/
 
 # How to run locally
 
