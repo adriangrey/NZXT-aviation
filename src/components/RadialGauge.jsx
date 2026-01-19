@@ -18,7 +18,7 @@ const RadialGauge = React.memo((props) => {
     },
     grid: {
       padding: {
-        left: -10,
+        left: -5,
         right: 0,
       },
     },
@@ -28,13 +28,13 @@ const RadialGauge = React.memo((props) => {
         endAngle: 90,
         dataLabels: {
           name: {
-            fontSize: "2rem",
+            fontSize: "0.5rem",
             color: "white",
-            offsetY: -48,
+            offsetY: -12,
           },
           value: {
             offsetY: 0,
-            fontSize: "4rem",
+            fontSize: "1rem",
             color: "white",
             formatter: function (val) {
               return val + "°C";
@@ -49,7 +49,7 @@ const RadialGauge = React.memo((props) => {
           background: "#f2f2f2",
           strokeWidth: "20%",
           opacity: 1,
-          margin: 15,
+          margin: 8,
         },
       },
     },
@@ -79,7 +79,8 @@ const RadialGauge = React.memo((props) => {
         options={options}
         series={series}
         type="radialBar"
-        height="350px"
+        height="115px"
+        width="115px"
       />
     </>
   );

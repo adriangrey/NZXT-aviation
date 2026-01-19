@@ -1,8 +1,28 @@
 import ReactApexChart from "react-apexcharts";
-import React from "react";
+import React, { useEffect } from "react";
 
 // eslint-disable-next-line react/display-name
 const SplineAreaChart = React.memo((props) => {
+    useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      .apexcharts-legend {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+      }
+      .apexcharts-legend-series {
+        white-space: nowrap !important;
+        margin-right: 8px !important;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   const options = {
     animations: {
       enabled: false,
@@ -22,6 +42,9 @@ const SplineAreaChart = React.memo((props) => {
       sparkline: {
         enabled: false,
       },
+      fontFamily: "Arial, Helvetica, sans-serif",
+      offsetX: 0,
+      offsetY: 0,
     },
     dataLabels: {
       enabled: false,
@@ -32,18 +55,38 @@ const SplineAreaChart = React.memo((props) => {
     },
     title: {
       text: "POWER (W)",
-      offsetY: 10,
+      offsetY: 5,
       floating: true,
       style: {
-        fontSize: "1.2rem",
+        fontSize: "0.7rem",
         fontWeight: "bold",
       },
     },
     legend: {
       show: true,
-      offsetY: 10,
-      fontSize: "25rem",
-      floating: true,
+      position: "bottom",
+      horizontalAlign: "center",
+      offsetY: -30,
+      offsetX: 0,
+      fontSize: "11px",
+      fontFamily: "Arial, Helvetica, sans-serif",
+      fontWeight: 400,
+      labels: {
+        colors: "#ffffff",
+        useSeriesColors: false,
+      },
+      markers: {
+        width: 10,
+        height: 10,
+        radius: 5,
+      },
+      itemMargin: {
+        horizontal: 10,
+        vertical: 0,
+      },
+      height: 20,
+      floating: false,
+      formatter: undefined,
     },
     grid: {
       show: false,
@@ -70,7 +113,7 @@ const SplineAreaChart = React.memo((props) => {
   ];
 
   return (
-    <>
+    <div style={{ width: "100%", height: "100%", overflow: "visible" }}>
       <ReactApexChart
         options={options}
         series={series}
@@ -78,7 +121,7 @@ const SplineAreaChart = React.memo((props) => {
         height="100%"
         width="100%"
       />
-    </>
+    </div>
   );
 });
 

@@ -10,12 +10,24 @@ import useMonitoring from "../hooks/useMonitoring";
 const OuterContainer = styled.div`
   background-image: url("./Frame_1.svg");
   background-position: center;
+  background-size: 320px 320px;
+  background-repeat: no-repeat;
   height: 320px;
   width: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const InnerContainer = styled.div`
-  padding-top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 12px 0 6px 0;
+  box-sizing: border-box;
 `;
 
 const LiquidContainer = styled.div`
@@ -23,55 +35,76 @@ const LiquidContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  width: 56px;
-  left: 132px;
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 12px;
 `;
 
 const RadialGaugeContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 123.5px;
+  align-items: center;
+  height: 115px;
+  gap: 0.5rem;
+  margin-top: 20px;
 `;
 
 const CenterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+  flex: 1;
+  margin-top: -15px;
+  margin-left: -45px;
 `;
 
 const SplineAreaChartContainer = styled.div`
-  height: 100px;
-  width: 140px;
+  height: 120px;
+  width: 135px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: visible;
+  min-height: 120px;
+  padding-top: 0px;
 `;
 
 const BarGaugeContainer = styled.div`
-  width: 140px;
+  width: 90px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.4rem;
+  margin-top: -40px;
+  align-items: stretch;
 `;
 
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 3.2rem;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 20px;
+  margin-top: -24px;
 `;
 
 const BottomItem = styled.div`
-  width: 45px;
-  margin-top: 1.5rem;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const BottomItemLabel = styled.p`
-  font-size: 1.1rem;
-  text-align: ${({ index, arrayLength }) =>
-    index === 0 ? "right" : index === arrayLength - 1 ? "left" : "center"};
+  font-size: 0.5rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
 `;
 
 // eslint-disable-next-line react/display-name
@@ -84,7 +117,7 @@ const KrakenDisplay = React.memo(() => {
         <LiquidContainer>
           <p
             style={{
-              fontSize: "1.1rem",
+              fontSize: "0.55rem",
             }}
           >
             LIQUID
@@ -119,7 +152,7 @@ const KrakenDisplay = React.memo(() => {
               <BottomItemLabel index={index} arrayLength={array.length}>
                 {item.label}
               </BottomItemLabel>
-              <p>{item.value}</p>
+              <p style={{ margin: "0.1rem 0", textAlign: "center" }}>{item.value}</p>
               <BottomItemLabel index={index} arrayLength={array.length}>
                 {item.unit}
               </BottomItemLabel>

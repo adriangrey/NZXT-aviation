@@ -83,54 +83,63 @@ const BarGauge = React.memo((props) => {
     <div
       style={{
         width: "100%",
-        paddingLeft: "0.8rem",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
+        gap: "0.15rem",
       }}
     >
-      <div>
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="bar"
-          width="180px"
-          height={20}
-        />
-        <h3
+      <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+        <div style={{ marginTop: "-10px" }}>
+          <ReactApexChart
+            options={options}
+            series={series}
+            type="bar"
+            width="58px"
+            height={9}
+          />
+        </div>
+        <div
           style={{
-            fontSize: "1.5rem",
-            margin: "0",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "baseline",
+            gap: "0.1rem",
+            marginLeft: "0.8rem",
+            marginTop: "-2px",
           }}
         >
-          {props?.label || "No Label"}
-        </h3>
+          <p
+            style={{
+              margin: "0",
+              lineHeight: "1",
+              fontSize: "1rem",
+              textAlign: "left",
+            }}
+          >
+            {props?.data || "0"}
+          </p>
+          <p
+            style={{
+              margin: "0",
+              fontSize: "1rem",
+              lineHeight: "1",
+              textAlign: "left",
+            }}
+          >
+            %
+          </p>
+        </div>
       </div>
-      <div
+      <h3
         style={{
-          display: "flex",
-          width: "100%",
-          flexDirection: "column",
-          marginLeft: "1.5rem",
+          fontSize: "0.55rem",
+          margin: "0",
+          lineHeight: "1.2",
+          textAlign: "left",
         }}
       >
-        <p
-          style={{
-            display: "block",
-            width: "40px",
-            marginTop: "-0.7rem",
-          }}
-        >
-          {props?.data || "0"}
-        </p>
-        <p
-          style={{
-            marginTop: "-0.5rem",
-            fontSize: "1.1rem",
-          }}
-        >
-          %
-        </p>
-      </div>
+        {props?.label || "No Label"}
+      </h3>
     </div>
   );
 });
