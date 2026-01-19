@@ -10,8 +10,8 @@ import useMonitoring from "../hooks/useMonitoring";
 const OuterContainer = styled.div`
   background-image: url("./Frame_1.svg");
   background-position: center;
-  height: 640px;
-  width: 640px;
+  height: 320px;
+  width: 320px;
 `;
 
 const InnerContainer = styled.div`
@@ -23,15 +23,15 @@ const LiquidContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  width: 112px;
-  left: 264px;
+  width: 56px;
+  left: 132px;
 `;
 
 const RadialGaugeContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 247px;
+  height: 123.5px;
 `;
 
 const CenterContainer = styled.div`
@@ -42,15 +42,15 @@ const CenterContainer = styled.div`
 `;
 
 const SplineAreaChartContainer = styled.div`
-  height: 200px;
-  width: 280px;
+  height: 100px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 const BarGaugeContainer = styled.div`
-  width: 280px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -64,7 +64,7 @@ const BottomContainer = styled.div`
 `;
 
 const BottomItem = styled.div`
-  width: 90px;
+  width: 45px;
   margin-top: 1.5rem;
 `;
 
