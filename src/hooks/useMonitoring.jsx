@@ -52,14 +52,25 @@ const useMonitoring = () => {
         frequency: Number(gpu?.frequency),
       });
 
+      // Get RAM frequency from the first module (most common setup has matching modules)
+      const ramFrequency = ram?.modules?.[0]?.frequency ?? null;
+
       setRam({
         inUse: Math.round((ram.inUse ?? 1) / 1024),
         inUsePercent: Math.round(((ram.inUse ?? 1) / (ram.totalSize ?? 1)) * 100),
         totalSize: Math.round((ram.totalSize ?? 1) / 1024),
+        frequency: ramFrequency !== null ? Number(ramFrequency) : null,
       });
 
+      // Note: According to @nzxt/web-integrations-types, Kraken interface only has liquidTemperature
+      // Pump speed is not available in the NZXT web integrations API
+      // We'll use CPU fan speed as a fallback since many users connect the pump to CPU fan header
+      // If kraken has pump-related properties, try those first; otherwise use CPU fan speed
+      const pumpSpeed = kraken?.pumpSpeed ?? kraken?.fanSpeed ?? kraken?.pump ?? kraken?.pumpRpm ?? kraken?.rpm ?? cpu?.fanSpeed ?? null;
+      
       setKraken({
         temperature: Number(kraken?.liquidTemperature?.toFixed(0)),
+        pumpSpeed: pumpSpeed !== null ? Number(pumpSpeed) : null,
       });
     };
 
